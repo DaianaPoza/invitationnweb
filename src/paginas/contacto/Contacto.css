@@ -1,0 +1,384 @@
+.contact-page {
+  overflow-x: hidden;
+  background: #fffdfa;
+}
+
+.contact-page .title-line {
+  display: none;
+}
+
+.contact-hero {
+  display: grid;
+  min-height: clamp(360px, 40vw, 560px);
+  align-items: center;
+  padding: clamp(40px, 7vw, 92px) clamp(22px, 8vw, 128px);
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(255, 253, 250, 0.97) 0%, rgba(255, 253, 250, 0.9) 31%, rgba(255, 253, 250, 0.28) 58%),
+    url("/imagenes/contacto/hero-contacto-florero.png") right center / cover no-repeat;
+}
+
+.contact-hero-copy {
+  max-width: 470px;
+}
+
+.contact-hero h1 {
+  max-width: 440px;
+  margin-bottom: 18px;
+  font-size: clamp(3rem, 5.2vw, 5.2rem);
+  font-weight: 500;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.contact-hero .title-line {
+  margin-inline: 0;
+}
+
+.contact-hero p:not(.eyebrow) {
+  max-width: 430px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.contact-process,
+.contact-channels {
+  padding: 44px clamp(22px, 4vw, 72px) 0;
+}
+
+.contact-section-heading {
+  display: grid;
+  justify-items: center;
+  max-width: 760px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.contact-section-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.contact-section-heading .title-line {
+  margin-inline: auto;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 4vw, 72px);
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.process-step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.process-step:not(:last-child)::after {
+  position: absolute;
+  top: 54px;
+  right: clamp(-42px, -3vw, -24px);
+  color: var(--gold);
+  font-size: 1.6rem;
+  content: "→";
+}
+
+.step-number {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  margin-bottom: -10px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 900;
+  box-shadow: 0 3px 0 rgba(6, 57, 59, 0.18);
+}
+
+.step-icon {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  color: var(--teal);
+  background: rgba(232, 223, 213, 0.56);
+}
+
+.step-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.process-step h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.process-step p {
+  max-width: 210px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.contact-needs {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.34fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: center;
+  max-width: 1240px;
+  margin: 50px auto 0;
+  padding: 34px clamp(24px, 4vw, 58px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 92% 15%, rgba(198, 146, 62, 0.08), transparent 18rem),
+    rgba(255, 248, 241, 0.88);
+}
+
+.needs-copy h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 2.7vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.needs-copy .title-line {
+  margin-inline: 0;
+}
+
+.needs-copy p:not(.eyebrow) {
+  max-width: 300px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.needs-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.needs-list article {
+  min-height: 150px;
+  padding: 0 24px;
+  border-left: 1px solid rgba(198, 146, 62, 0.28);
+  text-align: center;
+}
+
+.needs-list span {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  margin: 0 auto 18px;
+  color: var(--teal);
+}
+
+.needs-list svg {
+  width: 32px;
+  height: 32px;
+}
+
+.needs-list h3 {
+  margin: 0 0 10px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.25;
+}
+
+.needs-list p {
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.contact-channels {
+  padding-bottom: 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.contact-final-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  width: 100vw;
+  max-width: none;
+  min-height: 150px;
+  margin: 42px calc(50% - 50vw) 0;
+  padding: 34px clamp(26px, 8vw, 132px);
+  overflow: hidden;
+  border-top: 1px solid rgba(232, 223, 213, 0.82);
+  border-bottom: 1px solid rgba(232, 223, 213, 0.82);
+  border-radius: 0;
+  background:
+    linear-gradient(90deg, rgba(242, 244, 235, 0.98), rgba(242, 244, 235, 0.86)),
+    url("/imagenes/contacto/cta-rama-verde.png") center right 34% / cover no-repeat;
+}
+
+.contact-final-cta h2 {
+  margin: 0;
+  font-size: clamp(1.55rem, 2.4vw, 2.45rem);
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.contact-final-cta h2 span {
+  display: block;
+  color: var(--teal);
+  font-style: italic;
+}
+
+.contact-final-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 0 34px;
+  border-radius: 7px;
+  color: #fff;
+  background: var(--teal);
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 0 12px 28px rgba(6, 71, 73, 0.18);
+}
+
+.contact-final-cta a svg {
+  width: 19px;
+  height: 19px;
+}
+
+@media (max-width: 1120px) {
+  .contact-hero {
+    min-height: 460px;
+    background:
+      linear-gradient(90deg, rgba(255, 253, 250, 0.97) 0%, rgba(255, 253, 250, 0.87) 42%, rgba(255, 253, 250, 0.32) 72%),
+      url("/imagenes/contacto/hero-contacto-florero.png") right center / cover no-repeat;
+  }
+
+  .process-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px 52px;
+  }
+
+  .process-step:not(:last-child)::after {
+    display: none;
+  }
+
+  .contact-needs {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .needs-copy {
+    display: grid;
+    justify-items: center;
+  }
+
+  .needs-copy .title-line {
+    margin-inline: auto;
+  }
+
+  .needs-list article:first-child {
+    border-left: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .contact-hero {
+    min-height: auto;
+    padding: 48px 22px;
+    background:
+      linear-gradient(180deg, rgba(255, 253, 250, 0.88), rgba(255, 253, 250, 0.94)),
+      url("/imagenes/contacto/hero-contacto-florero.png") center / cover no-repeat;
+  }
+
+  .contact-hero-copy {
+    display: grid;
+    justify-items: center;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .contact-hero h1 {
+    max-width: 640px;
+    font-size: clamp(2.3rem, 10vw, 3.7rem);
+    text-align: center;
+  }
+
+  .contact-hero .title-line {
+    margin-inline: auto;
+  }
+
+  .contact-hero p:not(.eyebrow) {
+    max-width: 560px;
+    text-align: center;
+  }
+
+  .contact-process,
+  .contact-channels {
+    padding-inline: 16px;
+  }
+
+  .process-steps,
+  .contact-grid,
+  .needs-list {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-needs {
+    margin-top: 36px;
+    padding: 28px 22px;
+  }
+
+  .needs-list article,
+  .needs-list article:first-child {
+    min-height: 0;
+    padding: 20px 0;
+    border-left: 0;
+    border-top: 1px solid rgba(198, 146, 62, 0.28);
+  }
+
+  .needs-list article:first-child {
+    border-top: 0;
+  }
+
+  .contact-final-cta {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    padding: 30px 22px;
+    border-radius: 0;
+    background:
+      linear-gradient(180deg, rgba(242, 244, 235, 0.96), rgba(242, 244, 235, 0.92)),
+      url("/imagenes/contacto/cta-rama-verde.png") center / cover no-repeat;
+    text-align: center;
+  }
+}

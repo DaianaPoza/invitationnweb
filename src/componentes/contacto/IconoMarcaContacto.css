@@ -1,0 +1,17 @@
+.brand-contact-icon {
+  display: inline-grid;
+  width: 66px;
+  height: 66px;
+  place-items: center;
+}
+
+.brand-contact-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.brand-contact-icon.compact {
+  width: 40px;
+  height: 40px;
+}
