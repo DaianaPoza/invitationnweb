@@ -1,5 +1,6 @@
 .products-page-view {
   padding: 40px clamp(20px, 5vw, 88px) 34px;
+  scroll-margin-top: 92px;
   overflow-x: hidden;
   background:
     radial-gradient(circle at 12% 10%, rgba(185, 86, 62, 0.06), transparent 20rem),

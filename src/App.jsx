@@ -1,25 +1,32 @@
 import Encabezado from './componentes/encabezado/Encabezado'
-import Contacto from './paginas/contacto/Contacto'
 import EmpresasCongresos from './paginas/empresasCongresos/EmpresasCongresos'
 import Inicio from './paginas/inicio/Inicio'
 import Invitaciones from './paginas/invitaciones/Invitaciones'
-import Productos from './paginas/productos/Productos'
-import Servicios from './paginas/servicios/Servicios'
 import { useEffect, useState } from 'react'
 
-function obtenerPaginaActual() {
-  const hash = window.location.hash || '#inicio'
+function obtenerHashActual() {
+  return window.location.hash || '#inicio'
+}
 
-  if (hash === '#servicios') {
-    return 'servicios'
-  }
-
+function obtenerVistaActual(hash) {
   if (hash === '#invitaciones') {
     return 'invitaciones'
   }
 
   if (hash === '#empresas-congresos') {
     return 'empresas-congresos'
+  }
+
+  return 'inicio'
+}
+
+function obtenerPaginaActiva(hash, vistaActual) {
+  if (vistaActual === 'invitaciones' || vistaActual === 'empresas-congresos') {
+    return 'servicios'
+  }
+
+  if (hash === '#servicios') {
+    return 'servicios'
   }
 
   if (hash === '#proyectos') {
@@ -34,38 +41,42 @@ function obtenerPaginaActual() {
 }
 
 function App() {
-  const [paginaActual, setPaginaActual] = useState(obtenerPaginaActual)
+  const [hashActual, setHashActual] = useState(obtenerHashActual)
+  const vistaActual = obtenerVistaActual(hashActual)
+  const paginaActiva = obtenerPaginaActiva(hashActual, vistaActual)
 
   useEffect(() => {
-    const manejarCambioDeHash = () => setPaginaActual(obtenerPaginaActual())
+    const manejarCambioDeHash = () => setHashActual(obtenerHashActual())
 
     window.addEventListener('hashchange', manejarCambioDeHash)
     return () => window.removeEventListener('hashchange', manejarCambioDeHash)
   }, [])
 
   useEffect(() => {
-    const hash = window.location.hash || '#inicio'
-
-    if (
-      hash === '#servicios' ||
-      hash === '#proyectos' ||
-      hash === '#invitaciones' ||
-      hash === '#empresas-congresos' ||
-      hash === '#contacto'
-    ) {
+    if (vistaActual !== 'inicio') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
     }
-  }, [paginaActual])
+
+    const id = hashActual.replace('#', '') || 'inicio'
+    const destino =
+      id === 'servicios'
+        ? document.querySelector('#servicios .services-intro')
+        : document.getElementById(id)
+
+    if (destino) {
+      requestAnimationFrame(() => {
+        destino.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      })
+    }
+  }, [hashActual, vistaActual])
 
   return (
     <main className="page-shell">
-      <Encabezado paginaActual={paginaActual} />
-      {paginaActual === 'servicios' && <Servicios />}
-      {paginaActual === 'invitaciones' && <Invitaciones />}
-      {paginaActual === 'empresas-congresos' && <EmpresasCongresos />}
-      {paginaActual === 'proyectos' && <Productos />}
-      {paginaActual === 'contacto' && <Contacto />}
-      {paginaActual === 'inicio' && <Inicio />}
+      <Encabezado paginaActual={paginaActiva} />
+      {vistaActual === 'invitaciones' && <Invitaciones />}
+      {vistaActual === 'empresas-congresos' && <EmpresasCongresos />}
+      {vistaActual === 'inicio' && <Inicio />}
     </main>
   )
 }

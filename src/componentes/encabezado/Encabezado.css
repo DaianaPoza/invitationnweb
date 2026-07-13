@@ -1,7 +1,9 @@
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 20;
+  right: 0;
+  left: 0;
+  z-index: 1000;
   display: grid;
   grid-template-columns: max-content 1fr max-content;
   align-items: center;
@@ -13,6 +15,7 @@
   border-bottom: 1px solid rgba(232, 223, 213, 0.85);
   background: rgba(251, 250, 247, 0.92);
   backdrop-filter: blur(18px);
+  box-shadow: 0 8px 24px rgba(40, 35, 30, 0.04);
 }
 
 .header-menu {
@@ -25,10 +28,10 @@
 }
 
 .brand {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.45rem, 2vw, 2.05rem);
-  font-weight: 700;
-  letter-spacing: 0;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.08rem, 1.55vw, 1.42rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
@@ -45,9 +48,11 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: clamp(18px, 3vw, 42px);
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Inter, ui-sans-serif, system-ui, sans-serif;
   max-width: 100%;
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .main-nav a {
@@ -74,7 +79,7 @@
   min-height: 46px;
   padding: 0 22px;
   border-radius: 6px;
-  font-weight: 800;
+  font-weight: 600;
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
@@ -85,8 +90,7 @@
 }
 
 .budget-link:hover,
-.btn:hover,
-.service-card:hover {
+.btn:hover {
   transform: translateY(-2px);
 }
 
@@ -94,25 +98,28 @@
   .site-header {
     grid-template-columns: minmax(0, 1fr) 44px;
     gap: 12px;
-    min-height: 64px;
-    padding: 10px 16px;
+    min-height: 56px;
+    padding: 7px 14px;
+    z-index: 3000;
+    backdrop-filter: none;
   }
 
   .brand {
     justify-self: start;
     min-width: 0;
-    font-size: clamp(1.45rem, 7vw, 1.85rem);
+    font-size: clamp(1.18rem, 5.8vw, 1.55rem);
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   .menu-toggle {
     position: relative;
+    z-index: 3002;
     display: grid;
     place-content: center;
     gap: 5px;
     width: 44px;
-    height: 44px;
+    height: 42px;
     padding: 0;
     color: var(--teal);
     border: 1px solid rgba(0, 73, 75, 0.26);
@@ -129,6 +136,12 @@
     transition: transform 180ms ease, opacity 180ms ease;
   }
 
+  .menu-toggle[aria-expanded="true"] {
+    color: #fffaf4;
+    border-color: transparent;
+    background: transparent;
+  }
+
   .menu-toggle[aria-expanded="true"] span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -142,44 +155,109 @@
   }
 
   .header-menu {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
+    position: fixed;
+    inset: 0;
+    z-index: 3001;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    padding: 96px 28px 32px;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(24, 25, 27, 0.58),
+        rgba(24, 25, 27, 0.78)
+      ),
+      url("/imagenes/inicio/hero-tecnologia-eventos.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     visibility: hidden;
     opacity: 0;
-    transform: translateY(-8px);
-    transition: max-height 260ms ease, opacity 180ms ease, transform 180ms ease, visibility 0s linear 260ms;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: opacity 240ms ease, transform 240ms ease, visibility 0s linear 240ms;
   }
 
   .header-menu.open {
-    max-height: 390px;
-    padding: 8px 0 10px;
     visibility: visible;
     opacity: 1;
-    transform: translateY(0);
+    pointer-events: auto;
+    transform: translateX(0);
     transition-delay: 0s;
   }
 
   .main-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
     width: 100%;
+    flex: 1;
   }
 
   .main-nav a {
-    padding: 12px 10px;
-    text-align: center;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.64);
+    position: relative;
+    padding: 0 0 8px;
+    color: #fffaf4;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.45rem, 7vw, 2.15rem);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+  }
+
+  .main-nav a:hover,
+  .main-nav .active {
+    color: #fffaf4;
+  }
+
+  .main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 1px;
+    background: #c79a57;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .main-nav a.active::after {
+    opacity: 1;
+    transform: scaleX(1);
   }
 
   .budget-link {
-    width: 100%;
-    min-width: 0;
+    align-self: flex-start;
+    width: auto;
+    min-height: auto;
+    margin-top: auto;
+    margin-bottom: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    color: #c79a57;
+    background: transparent;
+    backdrop-filter: none;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .budget-link:hover {
+    transform: none;
   }
 }

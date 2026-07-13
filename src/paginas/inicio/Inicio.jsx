@@ -1,5 +1,7 @@
 import FooterContacto from '../../componentes/footer/FooterContacto'
+import Contacto from '../contacto/Contacto'
 import HeroInicio from './HeroInicio'
+import Productos from '../productos/Productos'
 import ServiciosInicio from './ServiciosInicio'
 import './Inicio.css'
 
@@ -8,6 +10,8 @@ function Inicio() {
     <>
       <HeroInicio />
       <ServiciosInicio />
+      <Productos />
+      <Contacto />
       <FooterContacto />
     </>
   )

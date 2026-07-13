@@ -1,41 +1,37 @@
-import MockupNavegador from '../../componentes/mockup-navegador/MockupNavegador'
-import { beneficiosInicio } from '../../data/datosInicio'
+
 
 function HeroInicio() {
   return (
     <section className="hero" id="inicio">
       <div className="hero-content">
-        <p className="eyebrow">Soluciones digitales que cuentan tu historia</p>
-        <h1>Diseño web para eventos, marcas y experiencias digitales</h1>
+        <img className="hero-logo" src="/imagenes/inicio/logo-iw-transparente.png" alt="Logo IW de Invitationn Web" />
+        <p className="hero-wordmark" aria-label="invitationnweb">
+          invitationn<span>web</span>
+        </p>
+        <p className="hero-tagline">Diseño web <span>•</span> Invitaciones digitales</p>
         <span className="title-line" />
         <p className="hero-text">
-          Creamos sitios web, landing pages e invitaciones digitales interactivas para celebraciones,
-          empresas y congresos.
+          Creamos sitios web, landing pages e invitaciones digitales interactivas para empresas,
+          profesionales y eventos, adaptadas a cada proyecto.
         </p>
+        <span className="title-line hero-line-bottom" />
+      <div className="hero-devices" aria-label="Diseños adaptados a escritorio, tablet y celular">
+  <svg className="device-icon device-laptop" viewBox="0 0 82 54" fill="none">
+    <rect x="17" y="7" width="48" height="32" rx="2.5" />
+    <path d="M13 40H69L76 50H6L13 40Z" />
+    <path d="M31 45H51" />
+  </svg>
 
-        <div className="hero-actions">
-          <a className="btn btn-outline" href="#servicios">
-            Ver servicios <span>→</span>
-          </a>
-          <a className="btn btn-primary" href="#proyectos">
-            Ver proyectos <span>→</span>
-          </a>
-        </div>
+  <svg className="device-icon device-tablet" viewBox="0 0 50 70" fill="none">
+    <rect x="9" y="4" width="32" height="62" rx="4" />
+    <circle cx="25" cy="58" r="1.6" />
+  </svg>
 
-        <div className="trust-row" aria-label="Beneficios principales">
-          {beneficiosInicio.map((item) => (
-            <div className="trust-item" key={item}>
-              <span className="trust-icon" />
-              <p>{item}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="hero-visual" aria-label="Vista previa de trabajos">
-        <MockupNavegador variante="congress" className="mockup-congress" />
-        <MockupNavegador variante="wedding" className="mockup-wedding" />
-        <MockupNavegador variante="fifteen" className="mockup-fifteen" />
+  <svg className="device-icon device-phone" viewBox="0 0 38 70" fill="none">
+    <rect x="8" y="8" width="22" height="54" rx="3.5" />
+    <circle cx="19" cy="55" r="1.4" />
+  </svg>
+</div>
       </div>
     </section>
   )

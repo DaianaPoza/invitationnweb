@@ -9,7 +9,6 @@ import {
   Rocket,
   Type,
 } from 'lucide-react'
-import FooterContacto from '../../componentes/footer/FooterContacto'
 import TarjetaContacto from '../../componentes/contacto/TarjetaContacto'
 import { canalesContacto } from '../../data/datosContacto'
 import './Contacto.css'
@@ -64,8 +63,7 @@ function Contacto() {
   const whatsappPrincipal = canalesContacto.find((canal) => canal.tipo === 'whatsapp')
 
   return (
-    <>
-      <section className="contact-page" id="contacto">
+    <section className="contact-page" id="contacto">
         <div className="contact-hero">
           <div className="contact-hero-copy">
             <p className="eyebrow">Contacto</p>
@@ -152,10 +150,7 @@ function Contacto() {
             Pedir presupuesto <ArrowRight strokeWidth={1.7} />
           </a>
         </div>
-      </section>
-
-      <FooterContacto />
-    </>
+    </section>
   )
 }
 
