@@ -4,7 +4,7 @@ import { categoriasProyectos, productosDemo } from '../../data/datosProductos'
 import './Productos.css'
 
 function Productos() {
-  const [categoriaAbierta, setCategoriaAbierta] = useState(categoriasProyectos[0]?.nombre)
+  const [categoriaAbierta, setCategoriaAbierta] = useState('')
 
   const desplazarCategoria = (categoria, direccion = 1) => {
     const carrusel = document.querySelector(`[data-project-carousel="${categoria}"]`)
@@ -34,7 +34,7 @@ function Productos() {
   }
 
   return (
-    <section className="products-page-view" id="proyectos">
+    <section className="products-page-view reveal-section" id="proyectos">
       <div className="products-page-heading">
         <h1>Proyectos</h1>
         <p>Explorá nuestro trabajo organizado por categoría.</p>

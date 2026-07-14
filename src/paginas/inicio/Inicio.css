@@ -651,8 +651,8 @@ background-repeat: no-repeat;
   }
 
   .hero-logo {
-    width: min(54vw, 210px);
-    margin-bottom: 16px;
+    width: min(46vw, 176px);
+    margin-bottom: 14px;
   }
 
   .hero-wordmark {

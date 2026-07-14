@@ -1,4 +1,5 @@
 import Encabezado from './componentes/encabezado/Encabezado'
+import BotonesFlotantes from './componentes/contacto/BotonesFlotantes'
 import EmpresasCongresos from './paginas/empresasCongresos/EmpresasCongresos'
 import Inicio from './paginas/inicio/Inicio'
 import Invitaciones from './paginas/invitaciones/Invitaciones'
@@ -81,12 +82,41 @@ function App() {
     }
   }, [hashActual, vistaActual])
 
+  useEffect(() => {
+    const secciones = document.querySelectorAll('.reveal-section:not(.is-visible)')
+
+    if (!('IntersectionObserver' in window)) {
+      secciones.forEach((seccion) => seccion.classList.add('is-visible'))
+      return undefined
+    }
+
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add('is-visible')
+            observador.unobserve(entrada.target)
+          }
+        })
+      },
+      {
+        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.14,
+      },
+    )
+
+    secciones.forEach((seccion) => observador.observe(seccion))
+
+    return () => observador.disconnect()
+  }, [hashActual, vistaActual])
+
   return (
     <main className="page-shell">
       <Encabezado paginaActual={paginaActiva} />
       {vistaActual === 'invitaciones' && <Invitaciones />}
       {vistaActual === 'empresas-congresos' && <EmpresasCongresos />}
       {vistaActual === 'inicio' && <Inicio />}
+      <BotonesFlotantes />
     </main>
   )
 }

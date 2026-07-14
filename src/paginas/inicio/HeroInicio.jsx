@@ -2,7 +2,7 @@
 
 function HeroInicio() {
   return (
-    <section className="hero" id="inicio">
+    <section className="hero reveal-section reveal-section--hero" id="inicio">
       <div className="hero-content">
         <img className="hero-logo" src="/imagenes/inicio/logo-iw-transparente.png" alt="Logo IW de Invitationn Web" />
         <p className="hero-wordmark" aria-label="invitationnweb">

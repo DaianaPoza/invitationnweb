@@ -26,7 +26,7 @@ function EmpresasCongresos() {
 
   return (
     <>
-      <section className="service-branch-page professional-page" id="empresas-congresos">
+      <section className="service-branch-page professional-page reveal-section" id="empresas-congresos">
         <div className="branch-hero professional-hero">
           <div className="branch-copy">
             <a className="service-back-link" href="#servicios">

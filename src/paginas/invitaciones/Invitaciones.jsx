@@ -18,7 +18,7 @@ function Invitaciones() {
 
   return (
     <>
-      <section className="service-branch-page invitations-page" id="invitaciones">
+      <section className="service-branch-page invitations-page reveal-section" id="invitaciones">
         <div className="branch-hero">
           <div className="branch-copy">
             <a className="service-back-link" href="#servicios">

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { canalesContacto } from '../../data/datosContacto'
 import './Encabezado.css'
 
 const enlacesMenu = [
@@ -11,6 +12,7 @@ const enlacesMenu = [
 
 function Encabezado({ paginaActual }) {
   const [menuAbierto, setMenuAbierto] = useState(false)
+  const whatsappPrincipal = canalesContacto.find((canal) => canal.tipo === 'whatsapp')
   const paginaActiva = ['invitaciones', 'empresas-congresos'].includes(paginaActual)
     ? 'servicios'
     : paginaActual
@@ -55,7 +57,13 @@ function Encabezado({ paginaActual }) {
           ))}
         </nav>
 
-        <a className="budget-link" href="#contacto" onClick={() => setMenuAbierto(false)}>
+        <a
+          className="budget-link"
+          href={whatsappPrincipal?.href || '#contacto'}
+          onClick={() => setMenuAbierto(false)}
+          rel="noreferrer"
+          target="_blank"
+        >
           Pedir presupuesto <span>→</span>
         </a>
       </div>

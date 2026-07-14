@@ -27,26 +27,3 @@ export const canalesContacto = [
     dato: '@invitationnweb',
   },
 ]
-
-export const datosProyectoContacto = [
-  {
-    titulo: 'Tipo de proyecto',
-    texto: 'Contanos qué tenés en mente.',
-    icono: 'form',
-  },
-  {
-    titulo: 'Fecha estimada',
-    texto: 'Decinos si hay una fecha definida.',
-    icono: 'calendar',
-  },
-  {
-    titulo: 'Estilo o referencia',
-    texto: 'Podés enviarnos ideas, estilos o ejemplos.',
-    icono: 'palette',
-  },
-  {
-    titulo: 'Contenido disponible',
-    texto: 'Textos, fotos, logos o lo que ya tengas.',
-    icono: 'file',
-  },
-]

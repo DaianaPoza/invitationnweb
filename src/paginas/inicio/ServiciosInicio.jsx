@@ -2,21 +2,21 @@ import { CalendarDays, Mail, Monitor } from 'lucide-react'
 
 const serviciosInformativos = [
   {
-    numero: '01',
+    
     titulo: 'Invitaciones digitales',
     texto: 'Invitaciones web personalizadas para bodas, cumpleaños, aniversarios y celebraciones especiales.',
     icono: Mail,
     fondo: 'service-card--invitaciones',
   },
   {
-    numero: '02',
+    
     titulo: 'Sitios web profesionales',
     texto: 'Páginas web modernas para profesionales, emprendimientos y empresas que buscan una presencia digital clara y confiable.',
     icono: Monitor,
     fondo: 'service-card--profesionales',
   },
   {
-    numero: '03',
+    
     titulo: 'Landing pages para eventos',
     texto: 'Sitios para congresos, jornadas, lanzamientos y eventos corporativos, con toda la información organizada en un solo lugar.',
     icono: CalendarDays,
@@ -26,7 +26,7 @@ const serviciosInformativos = [
 
 function ServiciosInicio() {
   return (
-    <section className="services-preview" id="servicios">
+    <section className="services-preview reveal-section" id="servicios">
       <div className="services-intro">
         <p className="eyebrow">Servicios</p>
 

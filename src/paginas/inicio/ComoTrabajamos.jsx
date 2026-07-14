@@ -25,7 +25,11 @@ const pasosTrabajo = [
 
 function ComoTrabajamos() {
   return (
-    <section className="contact-process work-process" id="como-trabajamos" aria-labelledby="work-process-title">
+    <section
+      className="contact-process work-process reveal-section"
+      id="como-trabajamos"
+      aria-labelledby="work-process-title"
+    >
       <div className="contact-section-heading">
         <p className="eyebrow">Así trabajamos</p>
   

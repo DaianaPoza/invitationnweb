@@ -5,7 +5,7 @@ import './Contacto.css'
 
 function Contacto() {
   return (
-    <section className="contact-page" id="contacto">
+    <section className="contact-page reveal-section" id="contacto">
       <div className="contact-shell">
         <div className="contact-section-heading contact-main-heading">
           <h1>Contacto</h1>
