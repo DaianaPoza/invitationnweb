@@ -1,4 +1,12 @@
-export const filtrosProductos = ['Todos', 'Bodas', '15 años', 'Infantiles', 'Empresas', 'Congresos']
+import { Baby, BriefcaseBusiness, CalendarDays, Cake, Heart } from 'lucide-react'
+
+export const categoriasProyectos = [
+  { nombre: 'Bodas', icono: Heart },
+  { nombre: '15 años', icono: Cake },
+  { nombre: 'Infantiles', icono: Baby },
+  { nombre: 'Empresas', icono: BriefcaseBusiness },
+  { nombre: 'Congresos', icono: CalendarDays },
+]
 
 export const productosDemo = [
 

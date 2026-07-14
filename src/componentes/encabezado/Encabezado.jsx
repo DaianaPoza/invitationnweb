@@ -4,6 +4,7 @@ import './Encabezado.css'
 const enlacesMenu = [
   { label: 'Inicio', href: '#inicio', page: 'inicio' },
   { label: 'Servicios', href: '#servicios', page: 'servicios' },
+  { label: 'Cómo trabajamos', href: '#como-trabajamos', page: 'como-trabajamos' },
   { label: 'Proyectos', href: '#proyectos', page: 'proyectos' },
   { label: 'Contacto', href: '#contacto', page: 'contacto' },
 ]

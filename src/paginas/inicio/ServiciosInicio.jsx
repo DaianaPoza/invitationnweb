@@ -30,7 +30,7 @@ function ServiciosInicio() {
       <div className="services-intro">
         <p className="eyebrow">Servicios</p>
 
-        <p>Diseñamos experiencias web personalizadas para eventos, profesionales y empresas.</p>
+        <p>Diseñamos páginas web personalizadas para eventos, profesionales y empresas.</p>
       </div>
 
       <div className="services-grid">

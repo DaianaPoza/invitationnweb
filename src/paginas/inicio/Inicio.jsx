@@ -1,5 +1,5 @@
-import FooterContacto from '../../componentes/footer/FooterContacto'
 import Contacto from '../contacto/Contacto'
+import ComoTrabajamos from './ComoTrabajamos'
 import HeroInicio from './HeroInicio'
 import Productos from '../productos/Productos'
 import ServiciosInicio from './ServiciosInicio'
@@ -10,9 +10,9 @@ function Inicio() {
     <>
       <HeroInicio />
       <ServiciosInicio />
+      <ComoTrabajamos />
       <Productos />
       <Contacto />
-      <FooterContacto />
     </>
   )
 }

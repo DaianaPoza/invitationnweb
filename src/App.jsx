@@ -33,6 +33,10 @@ function obtenerPaginaActiva(hash, vistaActual) {
     return 'proyectos'
   }
 
+  if (hash === '#como-trabajamos') {
+    return 'como-trabajamos'
+  }
+
   if (hash === '#contacto') {
     return 'contacto'
   }
@@ -62,6 +66,12 @@ function App() {
     const destino =
       id === 'servicios'
         ? document.querySelector('#servicios .services-intro')
+        : id === 'como-trabajamos'
+          ? document.querySelector('#como-trabajamos .contact-section-heading')
+        : id === 'proyectos'
+          ? document.querySelector('#proyectos .products-page-heading')
+        : id === 'contacto'
+          ? document.querySelector('#contacto .contact-main-heading')
         : document.getElementById(id)
 
     if (destino) {

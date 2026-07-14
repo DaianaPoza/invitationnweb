@@ -1,52 +1,174 @@
 .contact-page {
+  position: relative;
+  min-height: clamp(620px, 72vw, 820px);
+  padding: clamp(70px, 8vw, 108px) clamp(18px, 5vw, 80px);
   scroll-margin-top: 92px;
   overflow-x: hidden;
-  background: #fffdfa;
+  background:
+    linear-gradient(180deg, rgba(27, 24, 22, 0.56), rgba(27, 24, 22, 0.64)),
+    url("/imagenes/contacto/fondo-contacto-laptop.png") center / cover no-repeat;
+  color: #fffdf7;
+}
+
+.contact-page::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 50% 18%, rgba(198, 146, 62, 0.12), transparent 18rem),
+    linear-gradient(90deg, rgba(28, 24, 20, 0.7), rgba(28, 24, 20, 0.4));
+  pointer-events: none;
+}
+
+.contact-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: 1fr auto auto auto 1fr auto;
+  gap: clamp(28px, 4vw, 46px);
+  justify-items: center;
+  min-height: inherit;
+}
+
+.contact-main-heading {
+  grid-row: 2;
+  max-width: 760px;
+  scroll-margin-top: 92px;
+  color: inherit;
+  text-align: center;
+}
+
+.contact-main-heading h1 {
+  margin: 0 0 18px;
+  color: var(--terracotta);
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(0.9rem, 1.08vw, 1.08rem);
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  line-height: 1.55;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.34), 0 0 18px rgba(255, 253, 247, 0.16);
+  text-transform: uppercase;
+}
+
+.contact-main-heading p {
+  max-width: 760px;
+  margin: 0 auto 18px;
+  color: #fffdf7;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.25rem, 4.6vw, 4.8rem);
+  font-weight: 500;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.contact-main-heading span {
+  display: block;
+  color: rgba(255, 253, 247, 0.82);
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.contact-link-list {
+  grid-row: 3;
+  display: grid;
+  gap: 14px;
+  width: min(100%, 720px);
+}
+
+.contact-link-card {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr) 28px;
+  gap: 18px;
+  align-items: center;
+  min-height: 92px;
+  padding: 14px 22px 14px 14px;
+  border: 1px solid rgba(255, 253, 247, 0.32);
+  border-radius: 10px;
+  color: #fffdf7;
+  background: rgba(255, 253, 247, 0.08);
+  backdrop-filter: blur(7px);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.14);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.contact-link-card:hover,
+.contact-link-card:focus-visible {
+  border-color: rgba(198, 146, 62, 0.72);
+  background: rgba(255, 253, 247, 0.13);
+  transform: translateY(-2px);
+}
+
+.contact-link-card:focus-visible {
+  outline: 3px solid rgba(198, 146, 62, 0.42);
+  outline-offset: 3px;
+}
+
+.contact-link-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 253, 247, 0.12);
+}
+
+.contact-link-icon .brand-contact-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.contact-link-copy {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  text-align: left;
+}
+
+.contact-link-copy strong {
+  color: #fffdf7;
+  font-size: clamp(1.05rem, 1.45vw, 1.28rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.contact-link-copy span {
+  color: rgba(255, 253, 247, 0.78);
+  font-size: clamp(0.86rem, 1.1vw, 1rem);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.contact-link-arrow {
+  justify-self: end;
+  color: var(--terracotta);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.34));
+  opacity: 0.98;
+}
+
+.contact-legal {
+  grid-row: 6;
+  align-self: end;
+  margin: clamp(34px, 7vw, 84px) 0 0;
+  color: rgba(255, 253, 247, 0.66);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  text-align: center;
 }
 
 .contact-page .title-line {
   display: none;
 }
 
-.contact-hero {
-  display: grid;
-  min-height: clamp(360px, 40vw, 560px);
-  align-items: center;
-  padding: clamp(40px, 7vw, 92px) clamp(22px, 8vw, 128px);
-  border-bottom: 1px solid var(--line);
-  background:
-    linear-gradient(90deg, rgba(255, 253, 250, 0.97) 0%, rgba(255, 253, 250, 0.9) 31%, rgba(255, 253, 250, 0.28) 58%),
-    url("/imagenes/contacto/hero-contacto-florero.png") right center / cover no-repeat;
-}
-
-.contact-hero-copy {
-  max-width: 470px;
-}
-
-.contact-hero h1 {
-  max-width: 440px;
-  margin-bottom: 18px;
-  font-size: clamp(3rem, 5.2vw, 5.2rem);
-  font-weight: 500;
-  line-height: 1;
-  text-wrap: balance;
-}
-
-.contact-hero .title-line {
-  margin-inline: 0;
-}
-
-.contact-hero p:not(.eyebrow) {
-  max-width: 430px;
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
-  line-height: 1.65;
-}
-
 .contact-process,
 .contact-channels {
   padding: 44px clamp(22px, 4vw, 72px) 0;
+}
+
+.work-process {
+  padding-bottom: clamp(76px, 8vw, 118px);
+  scroll-margin-top: 92px;
+  border-top: 1px solid rgba(232, 223, 213, 0.74);
+  background: #fffdfa;
 }
 
 .contact-section-heading {
@@ -55,6 +177,17 @@
   max-width: 760px;
   margin: 0 auto 32px;
   text-align: center;
+}
+
+.work-process .contact-section-heading {
+  scroll-margin-top: 92px;
+}
+
+.work-process .contact-section-heading .eyebrow {
+  color: var(--terracotta);
+  font-size: clamp(0.9rem, 1.08vw, 1.08rem);
+  font-weight: 600;
+  letter-spacing: 0.38em;
 }
 
 .contact-section-heading h2 {
@@ -80,6 +213,7 @@
   position: relative;
   display: grid;
   justify-items: center;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Inter, ui-sans-serif, system-ui, sans-serif;
   text-align: center;
 }
 
@@ -105,10 +239,12 @@
   background: var(--teal);
   font-size: 0.78rem;
   font-weight: 900;
-  box-shadow: 0 3px 0 rgba(6, 57, 59, 0.18);
+  box-shadow: 0 3px 0 rgba(6, 57, 59, 0.18), 0 0 0 rgba(198, 146, 62, 0);
+  animation: process-number-glow 3.4s ease-in-out infinite;
 }
 
 .step-icon {
+  position: relative;
   display: grid;
   width: 76px;
   height: 76px;
@@ -117,16 +253,95 @@
   border-radius: 50%;
   color: var(--teal);
   background: rgba(232, 223, 213, 0.56);
+  overflow: hidden;
+  animation: process-icon-float 4.2s ease-in-out infinite;
+}
+
+.step-icon::after {
+  position: absolute;
+  inset: 12px;
+  content: "";
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198, 146, 62, 0.22), transparent 62%);
+  opacity: 0;
+  transform: scale(0.65);
+  animation: process-icon-sparkle 3.4s ease-in-out infinite;
 }
 
 .step-icon svg {
+  position: relative;
+  z-index: 1;
   width: 34px;
   height: 34px;
 }
 
+.process-step:nth-child(2) .step-icon,
+.process-step:nth-child(2) .step-icon::after,
+.process-step:nth-child(2) .step-number {
+  animation-delay: 0.35s;
+}
+
+.process-step:nth-child(3) .step-icon,
+.process-step:nth-child(3) .step-icon::after,
+.process-step:nth-child(3) .step-number {
+  animation-delay: 0.7s;
+}
+
+.process-step:nth-child(4) .step-icon,
+.process-step:nth-child(4) .step-icon::after,
+.process-step:nth-child(4) .step-number {
+  animation-delay: 1.05s;
+}
+
+@keyframes process-icon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes process-icon-sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+
+  45%,
+  58% {
+    opacity: 1;
+    transform: scale(1.22);
+  }
+}
+
+@keyframes process-number-glow {
+  0%,
+  100% {
+    box-shadow: 0 3px 0 rgba(6, 57, 59, 0.18), 0 0 0 rgba(198, 146, 62, 0);
+  }
+
+  50% {
+    box-shadow: 0 3px 0 rgba(6, 57, 59, 0.18), 0 0 22px rgba(198, 146, 62, 0.38);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-icon,
+  .step-icon::after,
+  .step-number {
+    animation: none;
+  }
+}
+
 .process-step h3 {
   margin: 0 0 10px;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 1rem;
+  font-weight: 600;
 }
 
 .process-step p {
@@ -312,6 +527,52 @@
 }
 
 @media (max-width: 860px) {
+  .contact-page {
+    min-height: 720px;
+    padding: 58px 16px;
+    background:
+      linear-gradient(180deg, rgba(27, 24, 22, 0.62), rgba(27, 24, 22, 0.7)),
+      url("/imagenes/contacto/fondo-contacto-laptop.png") center / cover no-repeat;
+  }
+
+  .contact-page::before {
+    background:
+      radial-gradient(circle at 50% 18%, rgba(198, 146, 62, 0.14), transparent 16rem),
+      linear-gradient(180deg, rgba(28, 24, 20, 0.38), rgba(28, 24, 20, 0.62));
+  }
+
+  .contact-shell {
+    min-height: 600px;
+  }
+
+  .contact-main-heading {
+    width: 100%;
+  }
+
+  .contact-main-heading p {
+    font-size: clamp(2.1rem, 9.5vw, 3.45rem);
+  }
+
+  .contact-link-list {
+    width: min(100%, 560px);
+  }
+
+  .contact-link-card {
+    grid-template-columns: 58px minmax(0, 1fr) 24px;
+    min-height: 84px;
+    padding: 12px 16px 12px 12px;
+    text-align: center;
+  }
+
+  .contact-link-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .contact-link-copy {
+    text-align: center;
+  }
+
   .contact-hero {
     min-height: auto;
     padding: 48px 22px;

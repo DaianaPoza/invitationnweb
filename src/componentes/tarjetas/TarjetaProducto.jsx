@@ -5,7 +5,7 @@ function TarjetaProducto({ producto }) {
     : ''
 
   return (
-    <article className="product-card">
+    <a className="product-card" href={producto.hrefDemo} target="_blank" rel="noreferrer">
       <div className={`product-preview ${producto.variante} ${tieneImagen ? 'with-image' : ''}`}>
         {tieneImagen ? (
           <img className="product-preview-image" src={rutaImagen} alt={`Portada de ${producto.titulo}`} />
@@ -26,14 +26,11 @@ function TarjetaProducto({ producto }) {
 
       <div className="product-card-body">
         <h2>{producto.titulo}</h2>
-        <p>{producto.descripcion}</p>
-        <div className="product-actions">
-          <a className="demo-link" href={producto.hrefDemo} target="_blank" rel="noreferrer">
-            Ver demo <span>→</span>
-          </a>
-        </div>
+        <span className="project-card-arrow" aria-hidden="true">
+          →
+        </span>
       </div>
-    </article>
+    </a>
   )
 }
 
