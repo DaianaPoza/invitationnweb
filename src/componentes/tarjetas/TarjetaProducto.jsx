@@ -1,8 +1,8 @@
+import { rutaAsset } from '../../utils/rutasAssets'
+
 function TarjetaProducto({ producto }) {
   const tieneImagen = Boolean(producto.imagen)
-  const rutaImagen = tieneImagen
-    ? `${import.meta.env.BASE_URL}${producto.imagen.replace(/^\/+/, '')}`
-    : ''
+  const rutaImagen = tieneImagen ? rutaAsset(producto.imagen) : ''
 
   return (
     <a className="product-card" href={producto.hrefDemo} target="_blank" rel="noreferrer">

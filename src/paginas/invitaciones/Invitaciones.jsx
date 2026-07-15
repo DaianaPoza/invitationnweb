@@ -8,6 +8,7 @@ import IconoMarcaContacto from '../../componentes/contacto/IconoMarcaContacto'
 import IconoServicio from '../../componentes/tarjetas/IconoServicio'
 import ItemFuncion from '../../componentes/servicios/ItemFuncion'
 import { canalesContacto } from '../../data/datosContacto'
+import { rutaAsset } from '../../utils/rutasAssets'
 import { ArrowLeft } from 'lucide-react'
 import './Invitaciones.css'
 
@@ -46,12 +47,12 @@ function Invitaciones() {
           <div className="invitation-preview">
             <img
               className="invitation-image invitation-image-wide"
-              src="/imagenes/invitacion-mayra-desktop.png"
+              src={rutaAsset('/imagenes/invitacion-mayra-desktop.png')}
               alt="Vista de escritorio de una invitación digital de 15 años"
             />
             <img
               className="invitation-image invitation-image-phone"
-              src="/imagenes/invitacion-mayra-mobile.jpeg"
+              src={rutaAsset('/imagenes/invitacion-mayra-mobile.jpeg')}
               alt="Vista móvil de una invitación digital de 15 años"
             />
           </div>

@@ -1,10 +1,16 @@
-
+import { rutaAsset } from '../../utils/rutasAssets'
 
 function HeroInicio() {
   return (
     <section className="hero reveal-section reveal-section--hero" id="inicio">
       <div className="hero-content">
-        <img className="hero-logo" src="/imagenes/inicio/logo-iw-transparente.png" alt="Logo IW de Invitationn Web" />
+
+<img
+  className="hero-logo"
+  src={rutaAsset('/imagenes/inicio/logo-iw.png')}
+  alt="Logo IW de Invitationn Web"
+/>
+
         <p className="hero-wordmark" aria-label="invitationnweb">
           invitationn<span>web</span>
         </p>

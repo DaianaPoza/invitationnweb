@@ -7,6 +7,7 @@ import IconoMarcaContacto from '../../componentes/contacto/IconoMarcaContacto'
 import IconoServicio from '../../componentes/tarjetas/IconoServicio'
 import ItemFuncion from '../../componentes/servicios/ItemFuncion'
 import { canalesContacto } from '../../data/datosContacto'
+import { rutaAsset } from '../../utils/rutasAssets'
 import { ArrowLeft } from 'lucide-react'
 import './EmpresasCongresos.css'
 
@@ -45,12 +46,12 @@ function EmpresasCongresos() {
           <div className="professional-preview">
             <img
               className="professional-image professional-image-wide"
-              src="/imagenes/skyline-desktop-full.png"
+              src={rutaAsset('/imagenes/skyline-desktop-full.png')}
               alt="Vista de escritorio de una página web para evento privado de lanzamiento"
             />
             <img
               className="professional-image professional-image-phone"
-              src="/imagenes/skyline-mobile-full.png"
+              src={rutaAsset('/imagenes/skyline-mobile-full.png')}
               alt="Vista móvil de una página web para evento privado de lanzamiento"
             />
           </div>
@@ -73,7 +74,7 @@ function EmpresasCongresos() {
             <article className="branch-card" key={item.title}>
               {imagenesTiposWeb[index] && (
                 <div className="branch-card-media">
-                  <img src={imagenesTiposWeb[index]} alt="" loading="lazy" decoding="async" />
+                  <img src={rutaAsset(imagenesTiposWeb[index])} alt="" loading="lazy" decoding="async" />
                 </div>
               )}
               <div className="branch-card-copy">
