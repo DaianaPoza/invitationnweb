@@ -3,7 +3,11 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+
+  // La vista previa se publica en:
+  // https://daianapoza.github.io/invitationnweb/
+  base: '/invitationnweb/',
+
   build: {
     outDir: 'docs',
     emptyOutDir: true,
