@@ -1,11 +1,11 @@
 import { Baby, BriefcaseBusiness, CalendarDays, Cake, Heart } from 'lucide-react'
 
 export const categoriasProyectos = [
-  { nombre: 'Bodas', icono: Heart },
-  { nombre: '15 años', icono: Cake },
-  { nombre: 'Infantiles', icono: Baby },
-  { nombre: 'Empresas', icono: BriefcaseBusiness },
-  { nombre: 'Congresos', icono: CalendarDays },
+  { nombre: 'Bodas', icono: Heart, imagen: '/imagenes/proyectos/categorias/bodas.jpg' },
+  { nombre: '15 años', icono: Cake, imagen: '/imagenes/proyectos/categorias/quince.jpg' },
+  { nombre: 'Infantiles', icono: Baby, imagen: '/imagenes/proyectos/categorias/infantiles.jpg' },
+  { nombre: 'Empresas', icono: BriefcaseBusiness, imagen: '/imagenes/proyectos/categorias/empresas.jpg' },
+  { nombre: 'Congresos', icono: CalendarDays, imagen: '/imagenes/proyectos/categorias/congresos.jpg' },
 ]
 
 export const productosDemo = [

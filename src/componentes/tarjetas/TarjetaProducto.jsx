@@ -1,4 +1,5 @@
 import { rutaAsset } from '../../utils/rutasAssets'
+import { Eye } from 'lucide-react'
 
 function TarjetaProducto({ producto }) {
   const tieneImagen = Boolean(producto.imagen)
@@ -8,7 +9,15 @@ function TarjetaProducto({ producto }) {
     <a className="product-card" href={producto.hrefDemo} target="_blank" rel="noreferrer">
       <div className={`product-preview ${producto.variante} ${tieneImagen ? 'with-image' : ''}`}>
         {tieneImagen ? (
-          <img className="product-preview-image" src={rutaImagen} alt={`Portada de ${producto.titulo}`} />
+          <>
+            <img className="product-preview-image" src={rutaImagen} alt={`Portada de ${producto.titulo}`} />
+            <span className="product-view-overlay" aria-hidden="true">
+              <span className="product-view-icon">
+                <Eye strokeWidth={1.8} />
+              </span>
+              <span>Ver proyecto</span>
+            </span>
+          </>
         ) : (
           <>
             <div className="browser-bar mini">
@@ -25,10 +34,10 @@ function TarjetaProducto({ producto }) {
       </div>
 
       <div className="product-card-body">
-        <h2>{producto.titulo}</h2>
-        <span className="project-card-arrow" aria-hidden="true">
-          →
-        </span>
+        <div>
+          <h2>{producto.titulo}</h2>
+          <p>{producto.fecha || producto.categoria}</p>
+        </div>
       </div>
     </a>
   )

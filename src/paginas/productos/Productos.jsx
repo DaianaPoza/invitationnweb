@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import TarjetaProducto from '../../componentes/tarjetas/TarjetaProducto'
 import { categoriasProyectos, productosDemo } from '../../data/datosProductos'
+import { rutaAsset } from '../../utils/rutasAssets'
 import './Productos.css'
 
 function Productos() {
@@ -41,10 +43,10 @@ function Productos() {
       </div>
 
       <div className="project-categories" aria-label="Categorías de proyectos">
-        {categoriasProyectos.map((categoria) => {
+        {categoriasProyectos.map((categoria, indice) => {
           const productos = productosDemo.filter((producto) => producto.categoria === categoria.nombre)
-          const Icono = categoria.icono
           const estaAbierta = categoriaAbierta === categoria.nombre
+          const panelId = `project-panel-${categoria.nombre.replace(/\s+/g, '-')}`
 
           return (
             <section className={`project-category ${estaAbierta ? 'is-open' : ''}`} key={categoria.nombre}>
@@ -52,22 +54,30 @@ function Productos() {
                 className="project-category-header"
                 type="button"
                 aria-expanded={estaAbierta}
-                aria-controls={`project-panel-${categoria.nombre.replace(/\s+/g, '-')}`}
+                aria-controls={panelId}
                 onClick={() => alternarCategoria(categoria.nombre)}
               >
+                <span className="project-category-number">{String(indice + 1).padStart(2, '0')}</span>
                 <div className="project-category-title">
-                  <Icono aria-hidden="true" strokeWidth={1.6} />
                   <h2>{categoria.nombre}</h2>
                 </div>
-                <span className="project-accordion-icon" aria-hidden="true">
-                  {estaAbierta ? '⌃' : '⌄'}
-                </span>
+                <img
+                  className="project-category-thumb"
+                  src={rutaAsset(categoria.imagen)}
+                  alt=""
+                  loading="lazy"
+                />
+                {estaAbierta ? (
+                  <ChevronUp className="project-accordion-icon" aria-hidden="true" strokeWidth={1.8} />
+                ) : (
+                  <ChevronDown className="project-accordion-icon" aria-hidden="true" strokeWidth={1.8} />
+                )}
               </button>
 
               <div
                 className="project-category-panel"
                 hidden={!estaAbierta}
-                id={`project-panel-${categoria.nombre.replace(/\s+/g, '-')}`}
+                id={panelId}
               >
                 <div className="project-carousel-wrap">
                   <button
