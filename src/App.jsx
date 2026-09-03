@@ -46,9 +46,20 @@ function obtenerPaginaActiva(hash, vistaActual) {
 }
 
 function App() {
-  const [hashActual, setHashActual] = useState(obtenerHashActual)
+  const [hashActual, setHashActual] = useState('#inicio')
   const vistaActual = obtenerVistaActual(hashActual)
   const paginaActiva = obtenerPaginaActiva(hashActual, vistaActual)
+
+  useEffect(() => {
+    if (window.location.hash !== '#inicio') {
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#inicio`)
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    })
+  }, [])
 
   useEffect(() => {
     const manejarCambioDeHash = () => setHashActual(obtenerHashActual())

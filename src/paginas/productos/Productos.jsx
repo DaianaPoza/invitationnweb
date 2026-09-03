@@ -1,114 +1,99 @@
-import { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import TarjetaProducto from '../../componentes/tarjetas/TarjetaProducto'
 import { categoriasProyectos, productosDemo } from '../../data/datosProductos'
-import { rutaAsset } from '../../utils/rutasAssets'
 import './Productos.css'
 
+const CATEGORIA_INICIAL = 'Bodas'
+
+function obtenerCantidadInicial() {
+  if (typeof window === 'undefined') {
+    return 8
+  }
+
+  return window.matchMedia('(max-width: 760px)').matches ? 4 : 8
+}
+
 function Productos() {
-  const [categoriaAbierta, setCategoriaAbierta] = useState('')
+  const filtros = categoriasProyectos.map((categoria) => categoria.nombre)
+  const categoriaInicial = filtros.includes(CATEGORIA_INICIAL) ? CATEGORIA_INICIAL : filtros[0]
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(categoriaInicial)
+  const [cantidadInicial, setCantidadInicial] = useState(obtenerCantidadInicial)
+  const [mostrarTodos, setMostrarTodos] = useState(false)
+  const filtrosRef = useRef(null)
 
-  const desplazarCategoria = (categoria, direccion = 1) => {
-    const carrusel = document.querySelector(`[data-project-carousel="${categoria}"]`)
+  const productosFiltrados = productosDemo.filter((producto) => producto.categoria === categoriaSeleccionada)
+  const productosVisibles = mostrarTodos ? productosFiltrados : productosFiltrados.slice(0, cantidadInicial)
+  const hayMasProyectos = productosFiltrados.length > cantidadInicial
 
-    if (carrusel) {
-      const tarjetas = Array.from(carrusel.querySelectorAll('.product-card'))
+  const seleccionarCategoria = (categoria) => {
+    setCategoriaSeleccionada(categoria)
+    setMostrarTodos(false)
+  }
 
-      if (tarjetas.length === 0) {
-        return
-      }
-
-      const indiceActual = tarjetas.reduce((indiceMasCercano, tarjeta, indice) => {
-        const distanciaActual = Math.abs(tarjeta.offsetLeft - carrusel.scrollLeft)
-        const distanciaMasCercana = Math.abs(tarjetas[indiceMasCercano].offsetLeft - carrusel.scrollLeft)
-
-        return distanciaActual < distanciaMasCercana ? indice : indiceMasCercano
-      }, 0)
-
-      const siguienteIndice = (indiceActual + direccion + tarjetas.length) % tarjetas.length
-
-      carrusel.scrollTo({ left: tarjetas[siguienteIndice].offsetLeft, behavior: 'smooth' })
+  useEffect(() => {
+    const actualizarCantidadInicial = () => {
+      setCantidadInicial(obtenerCantidadInicial())
     }
-  }
 
-  const alternarCategoria = (categoria) => {
-    setCategoriaAbierta((actual) => (actual === categoria ? '' : categoria))
-  }
+    actualizarCantidadInicial()
+    window.addEventListener('resize', actualizarCantidadInicial)
+
+    return () => window.removeEventListener('resize', actualizarCantidadInicial)
+  }, [])
+
+  useEffect(() => {
+    const botonActivo = filtrosRef.current?.querySelector('[aria-pressed="true"]')
+
+    if (botonActivo) {
+      botonActivo.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      })
+    }
+  }, [categoriaSeleccionada])
 
   return (
-    <section className="products-page-view reveal-section" id="proyectos">
+    <section className="products-page-view reveal-section is-visible" id="proyectos">
       <div className="products-page-heading">
         <h1>Proyectos</h1>
         <p>Explorá nuestro trabajo organizado por categoría.</p>
       </div>
 
-      <div className="project-categories" aria-label="Categorías de proyectos">
-        {categoriasProyectos.map((categoria, indice) => {
-          const productos = productosDemo.filter((producto) => producto.categoria === categoria.nombre)
-          const estaAbierta = categoriaAbierta === categoria.nombre
-          const panelId = `project-panel-${categoria.nombre.replace(/\s+/g, '-')}`
-
-          return (
-            <section className={`project-category ${estaAbierta ? 'is-open' : ''}`} key={categoria.nombre}>
-              <button
-                className="project-category-header"
-                type="button"
-                aria-expanded={estaAbierta}
-                aria-controls={panelId}
-                onClick={() => alternarCategoria(categoria.nombre)}
-              >
-                <span className="project-category-number">{String(indice + 1).padStart(2, '0')}</span>
-                <div className="project-category-title">
-                  <h2>{categoria.nombre}</h2>
-                </div>
-                <img
-                  className="project-category-thumb"
-                  src={rutaAsset(categoria.imagen)}
-                  alt=""
-                  loading="lazy"
-                />
-                {estaAbierta ? (
-                  <ChevronUp className="project-accordion-icon" aria-hidden="true" strokeWidth={1.8} />
-                ) : (
-                  <ChevronDown className="project-accordion-icon" aria-hidden="true" strokeWidth={1.8} />
-                )}
-              </button>
-
-              <div
-                className="project-category-panel"
-                hidden={!estaAbierta}
-                id={panelId}
-              >
-                <div className="project-carousel-wrap">
-                  <button
-                    className="project-carousel-button project-carousel-button--prev"
-                    type="button"
-                    aria-label={`Ver proyectos anteriores de ${categoria.nombre}`}
-                    onClick={() => desplazarCategoria(categoria.nombre, -1)}
-                  >
-                    <span>←</span>
-                  </button>
-
-                  <div className="project-carousel" data-project-carousel={categoria.nombre}>
-                    {productos.map((producto) => (
-                      <TarjetaProducto producto={producto} key={producto.hrefCaso} />
-                    ))}
-                  </div>
-
-                  <button
-                    className="project-carousel-button project-carousel-button--next"
-                    type="button"
-                    aria-label={`Ver más proyectos de ${categoria.nombre}`}
-                    onClick={() => desplazarCategoria(categoria.nombre)}
-                  >
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </section>
-          )
-        })}
+      <div className="project-filter-wrap">
+        <div className="project-filter-bar" aria-label="Filtrar proyectos por categoría" ref={filtrosRef}>
+          {filtros.map((filtro) => (
+            <button
+              className={`project-filter-button ${categoriaSeleccionada === filtro ? 'is-active' : ''}`}
+              type="button"
+              aria-pressed={categoriaSeleccionada === filtro}
+              key={filtro}
+              onClick={() => seleccionarCategoria(filtro)}
+            >
+              {filtro}
+            </button>
+          ))}
+        </div>
       </div>
+
+      <div className="project-gallery" aria-live="polite">
+        {productosVisibles.map((producto) => (
+          <TarjetaProducto producto={producto} key={producto.hrefCaso} />
+        ))}
+      </div>
+
+      {hayMasProyectos && (
+        <div className="project-more-actions">
+          <button
+            className="project-more-button"
+            type="button"
+            aria-expanded={mostrarTodos}
+            onClick={() => setMostrarTodos((actual) => !actual)}
+          >
+            {mostrarTodos ? 'Ver menos proyectos' : 'Ver más proyectos'}
+          </button>
+        </div>
+      )}
     </section>
   )
 }
