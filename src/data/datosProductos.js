@@ -101,6 +101,17 @@ export const productosDemo = [
   },
 
 
+
+
+    {titulo: 'Mis 15 - Luli',
+    categoria: '15 años',
+    descripcion: 'Estilo disco',
+    variante: 'quince',
+     hrefCaso: '#producto-luli-15',
+    hrefDemo: 'http://invitationnweb.com/mis15-sofi-dev/',
+    imagen: '/imagenes/cumples/cumple15-7.jpeg',
+  },
+
     {titulo: 'Mis 15 - Mayra',
     categoria: '15 años',
     descripcion: 'Diseño elegante y sofisticado con tonos cálidos y detalles dorados',
